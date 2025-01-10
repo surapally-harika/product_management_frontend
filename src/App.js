@@ -7,7 +7,7 @@ import ProductList from './Component/ProductList';
 import AddProduct from './Component/AddProduct';
 
 import Home from './Component/Home';
-import UpdateProduct from './Component/UpdateProduct';
+import Product from './Component/Product';
 import Auth from './Component/Auth';
 
 
@@ -22,7 +22,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path="/Auth" element={< Auth />} />
           <Route path="/ProductList" element={< ProductList />} />
-          <Route path="/product/:id" element={< UpdateProduct />} />
+          <Route path="/product/:id" element={< Product />} />
           <Route path="/product" element={< AddProduct />} />
         </Routes>
       </BrowserRouter>

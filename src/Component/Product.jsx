@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const UpdateProduct = () => {
+const Product = () => {
   const { id } = useParams(); // Get the product ID from the URL
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const UpdateProduct = () => {
       try {
          // get the token 
          let token =   JSON.parse(localStorage.getItem("token"));
-        const response = await fetch(`http://localhost:8080/api/product/${id}`, {
+        const response = await fetch(`http://localhost:8080/api/products/view/${id}`, {
               headers :{
                 "Authorization": "Bearer " + token
               }
@@ -44,7 +44,7 @@ const UpdateProduct = () => {
     try {
          // get the token 
          let token =   JSON.parse(localStorage.getItem("token"));
-      const response = await fetch(`http://localhost:8080/api/product/${id}`, {
+      const response = await fetch(`http://localhost:8080/api/products/update/${id}`, {
         method: 'POST', // Use PUT or PATCH depending on your backend setup
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ const UpdateProduct = () => {
           <input
             type="text"
             name="name"
-            value={product.pname}
+            value={product.name}
             onChange={handleInputChange}
             style={styles.input}
           />
@@ -93,7 +93,7 @@ const UpdateProduct = () => {
           <label style={styles.label}>Price:</label>
           <input
             type="text"
-            name="department"
+            name="price"
             value={product.price}
             onChange={handleInputChange}
             style={styles.input}
@@ -154,4 +154,4 @@ const styles = {
   },
 };
 
-export default UpdateProduct;
+export default Product;

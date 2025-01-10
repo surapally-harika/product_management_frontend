@@ -66,11 +66,7 @@ function Navbar() {
           Login/Register
         </button>
       </div>
-      <div className="cart">
-        <button>
-          Cart
-        </button>
-      </div>
+      
     </div>
   );
 }

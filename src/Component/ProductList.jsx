@@ -36,7 +36,7 @@ const ProductList = () => {
     const filterData = () => {
       const filtered = products.filter(product => {
         if (filterType === 'name') {
-          return product.pname.toLowerCase().includes(searchQuery.toLowerCase());
+          return product.name.toLowerCase().includes(searchQuery.toLowerCase());
         } else if (filterType === 'price') {
           return product.price.toLowerCase().includes(searchQuery.toLowerCase());
         }
@@ -68,7 +68,7 @@ const ProductList = () => {
         if (response.ok) {
            alert('product removed');
           setTimeout(() => {
-            navigate('/'); // Redirect to productList after successful update
+            navigate('/ProdcutList'); // Redirect to productList after successful update
           }, 1000);
         } else {
           throw new Error('Failed to Remove product');
@@ -125,6 +125,12 @@ const ProductList = () => {
                 <td style={styles.tableCell}>{product.id}</td>
                 <td style={styles.tableCell}>{product.name}</td>
                 <td style={styles.tableCell}>{product.price}</td>
+                <td style={styles.tableCell}><img
+            src={product.url} // Assuming `product.url` contains the image URL
+            alt={product.name}
+            style={styles.productImage} // Add styling for consistent image display
+          />
+                </td>
                 <td style={styles.tableCell}>
                   <button style={styles.editButton} onClick={() => handleEdit(product)}>Edit</button>
                   <button style={styles.deleteButton} onClick={() => handleDelete(product)}>Delete</button>
@@ -222,6 +228,12 @@ const styles = {
     padding: '10px',
     color: '#888',
   },
+  productImage: {
+  width: '50px', // Adjust the width as per your preference
+  height: '50px', // Adjust the height as per your preference
+  objectFit: 'cover', // Ensures the image fits nicely within the dimensions
+  borderRadius: '4px', // Optional: adds rounded corners
+},
 };
 
 export default ProductList;
